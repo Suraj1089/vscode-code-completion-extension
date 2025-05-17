@@ -1,0 +1,73 @@
+{
+  "name": "pairify",
+  "displayName": "pairify",
+  "description": "A VS Code extension to pair or format code elements.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:pairify.wrapInBrackets"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "pairify.wrapInBrackets",
+        "title": "Pairify: Wrap in Brackets",
+        "category": "Pairify"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "pairify.wrapInBrackets",
+          "group": "modification",
+          "when": "editorHasSelection",
+          "icon": {
+            "light": "icons/light/bracket.svg",
+            "dark": "icons/dark/bracket.svg"
+          }
+        }
+      ],
+      "editor/lightbulb": [
+        {
+          "command": "pairify.wrapInBrackets",
+          "when": "editorHasSelection",
+          "group": "code"
+        }
+      ],
+      "editor/inlineCompletions/actions": [
+        {
+          "command": "pairify.wrapInBrackets",
+          "when": "editorHasSelection",
+          "group": "primary"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "pairify.wrapInBrackets",
+        "key": "ctrl+alt+p",
+        "mac": "cmd+alt+p",
+        "when": "editorHasSelection"
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.100.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "eslint": "^9.25.1",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
